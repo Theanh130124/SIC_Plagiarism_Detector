@@ -67,3 +67,22 @@ Ngược lại, NLTK cho phép người dùng chọn từ một danh sách lớn
 Skip-gram: Dự đoán những từ ngữ cảnh(output là context words) nếu biết trước từ đích (input là target words).
 
 CBOW (Continuous Bag of Words): Dựa vào những từ ngữ cảnh để dự đoán từ đích. (*ngược lại với Skip-gram)
+
+
+w2v_model = Word2Vec(sentences=all_sentences, vector_size=100, window=5, min_count=1, workers=4)
+
+- vector_size = 100 -> kích thước của vector sẽ là 100 -> vector càng lớn thì càng giàu thông tin 
+
+
+
+"The quick brown fox jumps over the lazy dog"
+
+- window = 2 -> là cửa sổ ngữ cảnh = 2 -> vd context word là từ fox thì nó sẽ nhìn đc bên trái và bên phải 2 từ từ fox vd như từ brown , quick và từ jumps , over
+
+
+- min_count = 1 -> bỏ từ chỉ xuất hiện 1 lần trong toàn bộ dữ liệu (nhầm bỏ các từ rác)
+
+
+
+-workers=4 -> 4 CPU hoạt động song song
+
