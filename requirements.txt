@@ -1,0 +1,15 @@
+Flask
+numpy
+pandas
+scikit-learn
+nltk
+spacy
+contractions
+matplotlib
+seaborn
+wordcloud
+keras-tuner
+tqdm
+tensorflow
+gensim
+

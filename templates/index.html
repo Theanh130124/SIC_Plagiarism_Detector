@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plagiarism Detector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      resize: vertical;
+      font-family: inherit;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .result-container {
+      margin-top: 25px;
+      padding: 0;
+      text-align: left;
+    }
+
+    .result-box {
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .plagiarism {
+      background-color: #ffebee;
+      border-left: 4px solid #f44336;
+    }
+
+    .no-plagiarism {
+      background-color: #e8f5e9;
+      border-left: 4px solid #4CAF50;
+    }
+
+    .error {
+      background-color: #fff3e0;
+      border-left: 4px solid #ff9800;
+    }
+
+    .confidence {
+      font-size: 14px;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Plagiarism Detection System</h1>
+
+    <form action="/detect" method="post">
+      <textarea name="text" placeholder="Enter text to check for plagiarism..." required>{{ input_text if input_text else '' }}</textarea>
+      <button type="submit">Check for Plagiarism</button>
+    </form>
+
+    <div class="result-container">
+      {% if error %}
+      <div class="result-box error">
+        <strong>Error:</strong> {{ error }}
+      </div>
+      {% endif %}
+
+      {% if result %}
+      <div class="result-box {% if 'No' in result %}no-plagiarism{% else %}plagiarism{% endif %}">
+        <strong>Result:</strong> {{ result }}<br>
+        <span class="confidence">Confidence: {{ confidence }}</span>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>
