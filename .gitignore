@@ -1,0 +1,6 @@
+venv310
+best_model.pkl
+word2vec_model.pkl
+data.csv
+cleaned_data.csv
+best_model.h5
